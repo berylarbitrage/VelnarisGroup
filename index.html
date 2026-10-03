@@ -190,6 +190,25 @@ label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-tr
 input,select,textarea{width:100%;font:500 1rem var(--body);color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:0;padding:12px 14px;outline:none;transition:border-color .2s}
 input:focus,select:focus,textarea:focus{border-color:var(--orange)}
 textarea{min-height:110px;resize:vertical}
+.form-wrap{background:var(--concrete-2);color:var(--ink);padding:30px;border-top:8px solid var(--orange)}
+.form-wrap form{background:none;padding:0;border:0}
+.req-note{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+i.req{font-style:normal;color:var(--orange)}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radio{display:inline-flex;align-items:center;gap:8px;margin:0;border:2px solid var(--line);background:#fff;padding:9px 14px;cursor:pointer;font-size:.88rem;letter-spacing:.06em;color:var(--ink)}
+.radio input{width:auto;accent-color:var(--orange)}
+.radio:has(input:checked){border-color:var(--ink);background:var(--ink);color:var(--orange)}
+.pos{display:flex;flex-wrap:wrap;gap:8px}
+.pos button{border:2px solid var(--line);background:#fff;padding:7px 12px;font:700 .85rem var(--body);cursor:pointer;color:var(--ink)}
+.pos button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange)}
+.btn-full{width:100%;justify-content:center;margin-top:20px}
+.btn-full[disabled]{opacity:.6;cursor:wait}
+.form-err{margin-top:16px;background:#fff;border-left:6px solid #C62828;padding:12px 14px;font-size:.92rem;font-weight:600}
+.form-err a{text-decoration:underline}
+.form-ok{text-align:center;padding:40px 10px}
+.form-ok b{display:inline-grid;place-items:center;width:64px;height:64px;background:var(--orange);font-size:2rem}
+.form-ok h3{font-family:var(--head);text-transform:uppercase;font-size:2rem;margin:16px 0 6px}
+.form-ok p{color:var(--steel)}
 .form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;flex-wrap:wrap}
 .form-foot small{color:var(--muted);font-size:.82rem;max-width:26em}
 .hidden{display:none}
@@ -241,7 +260,7 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
   .ind-card .n{grid-column:1/-1}
   .ind-card svg{margin:4px 0 0;grid-row:span 2}
   .panel{padding:24px}
-  form{padding:22px 16px}
+  .form-wrap{padding:22px 16px}
 }
 </style>
 </head>
@@ -434,32 +453,36 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
             <div><dt data-i="ct.hours">Hours</dt><dd data-i="ct.hoursV"></dd></div>
           </dl>
         </div>
-        <form id="form" class="rv" novalidate>
-          <div class="tabs" role="tablist">
-            <button type="button" role="tab" aria-selected="true" data-mode="hire" data-i="ct.tabHire">I need staff</button>
-            <button type="button" role="tab" aria-selected="false" data-mode="work" data-i="ct.tabWork">I need work</button>
-          </div>
+        <div class="form-wrap rv">
+        <form id="form" novalidate>
+          <p class="req-note" data-i="f.reqNote">* required</p>
           <div class="fields">
-            <div><label for="f-name" data-i="f.name">Full name</label><input id="f-name" name="name" required autocomplete="name"></div>
-            <div><label for="f-phone" data-i="f.phone">Phone</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel"></div>
-            <div class="full"><label for="f-email" data-i="f.email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
-            <div class="m-hire full"><label for="f-co" data-i="f.company">Company</label><input id="f-co" name="company" autocomplete="organization"></div>
-            <div class="m-hire"><label for="f-head" data-i="f.headcount">Workers needed</label><input id="f-head" name="headcount" type="number" min="1"></div>
-            <div class="m-hire"><label for="f-start" data-i="f.start">Start date</label><input id="f-start" name="start" type="date"></div>
-            <div class="m-work hidden"><label for="f-lang" data-i="f.lang">Preferred language</label>
-              <select id="f-lang" name="language"><option>English</option><option>Español</option><option>中文</option></select></div>
-            <div class="m-work hidden"><label for="f-shift" data-i="f.shift">Preferred shift</label>
+            <div><label for="f-name"><span data-i="f.name">Name</span> <i class="req">*</i></label><input id="f-name" name="name" required autocomplete="name"></div>
+            <div><label for="f-email"><span data-i="f.email">Email</span> <i class="req">*</i></label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+            <div><label for="f-phone"><span data-i="f.phone">Phone</span> <i class="req">*</i></label><input id="f-phone" name="phone" type="tel" required autocomplete="tel"></div>
+            <div><label for="f-co" data-i="f.company">Company</label><input id="f-co" name="company" autocomplete="organization" data-ph="f.optional"></div>
+            <div class="full"><label><span data-i="f.iam">I am a...</span> <i class="req">*</i></label>
+              <div class="radios" role="radiogroup">
+                <label class="radio"><input type="radio" name="type" value="Employer"> <span data-i="f.employer">Employer</span></label>
+                <label class="radio"><input type="radio" name="type" value="Job Seeker"> <span data-i="f.seeker">Job seeker</span></label>
+                <label class="radio"><input type="radio" name="type" value="Other" checked> <span data-i="f.other">Other</span></label>
+              </div></div>
+            <div class="full m-pos hidden"><label id="pos-label" data-i="f.posNeeded">Positions needed</label><div class="pos" id="pos"></div></div>
+            <div class="m-emp m-seek hidden"><label for="f-loc" data-i="f.location">Location</label>
+              <select id="f-loc" name="location"><option value="" data-i="f.select">Select...</option><option value="Illinois" data-i="st.il">Illinois</option><option value="Texas" data-i="st.tx">Texas</option><option value="Georgia" data-i="st.ga">Georgia</option><option value="New York" data-i="st.ny">New York</option></select></div>
+            <div class="m-emp hidden"><label for="f-head" data-i="f.headcount">Workers needed</label><input id="f-head" name="workers" type="number" min="1"></div>
+            <div class="m-emp hidden"><label for="f-start" data-i="f.start">Start date</label><input id="f-start" name="start_date" type="date"></div>
+            <div class="m-seek hidden"><label for="f-shift" data-i="f.shift">Preferred shift</label>
               <select id="f-shift" name="shift"><option value="Any" data-i="f.any">Any</option><option value="Day" data-i="f.day">Day</option><option value="Evening" data-i="f.eve">Evening</option><option value="Night" data-i="f.night">Night</option></select></div>
-            <div class="full"><label for="f-msg" data-i="f.msg">Details</label><textarea id="f-msg" name="message"></textarea></div>
+            <div class="m-seek hidden"><label for="f-lang" data-i="f.lang">Preferred language</label>
+              <select id="f-lang" name="languages"><option>English</option><option>Español</option><option>中文</option></select></div>
+            <div class="full"><label for="f-msg" data-i="f.help">How can we help?</label><textarea id="f-msg" name="comments"></textarea></div>
           </div>
-          <div class="form-foot">
-            <small data-i="f.note"></small>
-            <div class="call-row" style="margin:0">
-              <button class="btn btn-w hidden email-only" type="submit" value="email" style="color:var(--ink);border-color:var(--ink)"><span data-i="f.sendEmail">Send by email</span></button>
-              <button class="btn btn-o" type="submit" value="sms"><span data-i="f.send">Send by text</span> →</button>
-            </div>
-          </div>
+          <p class="form-err hidden" id="form-err"></p>
+          <button class="btn btn-o btn-full" type="submit" id="f-submit"><span data-i="f.submit">Submit</span> →</button>
         </form>
+        <div class="form-ok hidden" id="form-ok"><b>✓</b><h3 data-i="f.okT">Got it.</h3><p data-i="f.okD">We'll text you back within one business day.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -535,6 +558,8 @@ en:{
  'f.msg':'Details','f.msgPhHire':'Roles, shift times, location, pay rate…','f.msgPhWork':'Jobs you have done, certifications (e.g. forklift), where you live…',
  'f.note':'Submitting opens your text messages with the details filled in.','f.send':'Send by text','f.sendEmail':'Send by email','f.req':'Please enter your name and phone number.',
  'subj.hire':'Staffing request','subj.work':'Job application',
+ 'f.reqNote':'* required','f.iam':'I am a...','f.employer':'Employer','f.seeker':'Job seeker','f.other':'Other','f.optional':'Optional','f.posNeeded':'Positions needed','f.posWanted':'Positions you want','f.location':'Location','f.select':'Select...','f.help':'How can we help?','f.submit':'Submit','f.sending':'Sending…','f.okT':'Got it.','f.okD':"We'll text you back within one business day.",'f.reqAll':'Please fill in your name, email and phone.','f.fail':'Something went wrong sending the form. Please <a class="sms-link" href="#">text us</a> instead.','f.helpPhEmp':'Roles, shift times, pay rate, anything else…','f.helpPhSeek':'Jobs you have done, certifications (e.g. forklift), availability…','f.helpPhOther':'Tell us what you need…',
+ pos:['Warehouse / Sorting', 'Picking & Packing', 'Forklift', 'Machine operator', 'Assembly', 'Food production', 'Sanitation', 'Shipping & Receiving', 'General labor', 'Other'],
  'foot.rights':'All rights reserved.','foot.eeo':'Velnaris Group is an equal opportunity employer.'
 },
 es:{
@@ -585,6 +610,8 @@ es:{
  'f.msg':'Detalles','f.msgPhHire':'Puestos, horarios, ubicación, tarifa…','f.msgPhWork':'Trabajos que ha hecho, certificaciones (p. ej. montacargas), dónde vive…',
  'f.note':'Al enviar se abren sus mensajes de texto con los datos llenos.','f.send':'Enviar por mensaje','f.sendEmail':'Enviar por correo','f.req':'Escriba su nombre y teléfono, por favor.',
  'subj.hire':'Solicitud de personal','subj.work':'Solicitud de empleo',
+ 'f.reqNote':'* obligatorio','f.iam':'Soy...','f.employer':'Empleador','f.seeker':'Busco trabajo','f.other':'Otro','f.optional':'Opcional','f.posNeeded':'Puestos que necesita','f.posWanted':'Puestos que busca','f.location':'Ubicación','f.select':'Seleccione...','f.help':'¿En qué podemos ayudarle?','f.submit':'Enviar','f.sending':'Enviando…','f.okT':'Recibido.','f.okD':'Le responderemos por mensaje de texto en un día hábil.','f.reqAll':'Escriba su nombre, correo y teléfono.','f.fail':'No se pudo enviar el formulario. Por favor <a class="sms-link" href="#">envíenos un mensaje</a>.','f.helpPhEmp':'Puestos, horarios, tarifa, otros detalles…','f.helpPhSeek':'Trabajos que ha hecho, certificaciones (p. ej. montacargas), disponibilidad…','f.helpPhOther':'Cuéntenos qué necesita…',
+ pos:['Almacén / Clasificación', 'Surtido y empaque', 'Montacargas', 'Operador de máquina', 'Ensamblaje', 'Producción de alimentos', 'Sanitización', 'Envíos y recepción', 'Labor general', 'Otro'],
  'foot.rights':'Todos los derechos reservados.','foot.eeo':'Velnaris Group es un empleador que ofrece igualdad de oportunidades.'
 },
 zh:{
@@ -635,10 +662,14 @@ zh:{
  'f.msg':'详细说明','f.msgPhHire':'岗位、班次时间、地点、时薪…','f.msgPhWork':'做过的工作、证书（如叉车证）、住在哪里…',
  'f.note':'提交后会打开手机短信，内容已自动填好。','f.send':'用短信发送','f.sendEmail':'用邮件发送','f.req':'请填写姓名和电话。',
  'subj.hire':'用工申请','subj.work':'求职报名',
+ 'f.reqNote':'* 为必填','f.iam':'我是...','f.employer':'雇主','f.seeker':'求职者','f.other':'其他','f.optional':'选填','f.posNeeded':'需要的岗位','f.posWanted':'想做的岗位','f.location':'所在州','f.select':'请选择...','f.help':'需要我们帮什么？','f.submit':'提交','f.sending':'提交中…','f.okT':'收到了。','f.okD':'我们会在一个工作日内用短信回复您。','f.reqAll':'请填写姓名、邮箱和电话。','f.fail':'表单提交失败，请直接<a class="sms-link" href="#">发短信给我们</a>。','f.helpPhEmp':'岗位、班次时间、时薪及其他要求…','f.helpPhSeek':'做过的工作、证书（如叉车证）、什么时候能上班…','f.helpPhOther':'告诉我们您的需求…',
+ pos:['仓库 / 分拣', '拣货打包', '叉车', '机器操作', '组装', '食品生产', '清洁消毒', '收发货', '普工', '其他'],
  'foot.rights':'版权所有。','foot.eeo':'Velnaris Group 是平等机会雇主。'
 }};
 
-let lang = 'en', mode = 'hire';
+let lang = 'en';
+const picked = new Set();   // indexes into T.en.pos
+const API = 'https://primeanchorworkforce.com/api/inquiry';
 const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
 
 function setLang(l){
@@ -650,22 +681,41 @@ function setLang(l){
   const items = d.ticker.concat(d.ticker);
   $('#ticker').innerHTML = items.map(t => `<span>${t}</span>`).join('');
   $('#chips').innerHTML = d.roles.map(r => `<span>${r}</span>`).join('');
-  $('#f-msg').placeholder = mode === 'hire' ? d['f.msgPhHire'] : d['f.msgPhWork'];
+  $$('[data-ph]').forEach(el => el.placeholder = d[el.dataset.ph] || '');
+  renderPos();
+  setRole(role());
   try { localStorage.setItem('vg-lang', lang); } catch(e){}
 }
 
-function setMode(m){
-  mode = m;
-  $$('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.mode === m));
-  $$('.m-hire').forEach(e => e.classList.toggle('hidden', m !== 'hire'));
-  $$('.m-work').forEach(e => e.classList.toggle('hidden', m !== 'work'));
-  $('#f-msg').placeholder = T[lang][m === 'hire' ? 'f.msgPhHire' : 'f.msgPhWork'];
+const role = () => ($('input[name=type]:checked') || {}).value || 'Other';
+
+function renderPos(){
+  $('#pos').innerHTML = T[lang].pos.map((p, i) =>
+    `<button type="button" data-n="${i}" aria-pressed="${picked.has(i)}">${p}</button>`).join('');
+}
+$('#pos').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const n = +b.dataset.n;
+  picked.has(n) ? picked.delete(n) : picked.add(n);
+  b.setAttribute('aria-pressed', picked.has(n));
+});
+
+function setRole(r){
+  const emp = r === 'Employer', seek = r === 'Job Seeker';
+  $$('input[name=type]').forEach(x => x.checked = x.value === r);
+  $('.m-pos').classList.toggle('hidden', !emp && !seek);
+  $$('.m-emp, .m-seek').forEach(e => e.classList.add('hidden'));
+  if (emp) $$('.m-emp').forEach(e => e.classList.remove('hidden'));
+  if (seek) $$('.m-seek').forEach(e => e.classList.remove('hidden'));
+  const d = T[lang];
+  $('#pos-label').innerHTML = seek ? d['f.posWanted'] : d['f.posNeeded'];
+  $('#f-msg').placeholder = emp ? d['f.helpPhEmp'] : seek ? d['f.helpPhSeek'] : d['f.helpPhOther'];
 }
 
 $$('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-$$('.tabs button').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
-$$('[data-hire]').forEach(a => a.addEventListener('click', () => setMode('hire')));
-$$('[data-work]').forEach(a => a.addEventListener('click', () => setMode('work')));
+$$('input[name=type]').forEach(x => x.addEventListener('change', () => setRole(x.value)));
+$$('[data-hire]').forEach(a => a.addEventListener('click', () => setRole('Employer')));
+$$('[data-work]').forEach(a => a.addEventListener('click', () => setRole('Job Seeker')));
 
 const nav = $('#nav'), mt = $('.menu-toggle');
 mt.addEventListener('click', () => { const o = nav.classList.toggle('open'); mt.setAttribute('aria-expanded', o); });
@@ -681,18 +731,37 @@ if (SITE.email) {
 }
 $('#yr').textContent = new Date().getFullYear();
 
-$('#form').addEventListener('submit', e => {
+$('#form').addEventListener('submit', async e => {
   e.preventDefault();
-  const f = new FormData(e.target), d = T[lang];
-  if (!f.get('name').trim() || !f.get('phone').trim()) { alert(d['f.req']); return; }
-  const keys = mode === 'hire'
-    ? ['name','phone','email','company','headcount','start','message']
-    : ['name','phone','email','language','shift','message'];
-  const body = keys.filter(k => (f.get(k) || '').trim()).map(k => `${k}: ${f.get(k)}`).join('\n');
-  const subject = `${d['subj.' + mode]} — ${f.get('name')}`;
-  location.href = (e.submitter && e.submitter.value === 'email' && SITE.email)
-    ? `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    : `sms:${TEL}?&body=${encodeURIComponent(subject + '\n' + body)}`;
+  const f = new FormData(e.target), d = T[lang], err = $('#form-err');
+  const v = k => String(f.get(k) || '').trim();
+  err.classList.add('hidden');
+  if (!v('name') || !v('email') || !v('phone')) { err.innerHTML = d['f.reqAll']; err.classList.remove('hidden'); return; }
+  const r = role(), emp = r === 'Employer', seek = r === 'Job Seeker';
+  const shift = seek && v('shift') !== 'Any' ? `Preferred shift: ${v('shift')}` : '';
+  const data = {
+    source: 'Velnaris',
+    name: v('name'), email: v('email'), phone: v('phone'), company: v('company'), type: r,
+    positions: (emp || seek) ? [...picked].sort((a, b) => a - b).map(i => T.en.pos[i]).join(', ') : '',
+    location: (emp || seek) ? v('location') : '',
+    workers: emp ? v('workers') : '', start_date: emp ? v('start_date') : '',
+    languages: seek ? v('languages') : '',
+    comments: [shift, v('comments')].filter(Boolean).join('\n')
+  };
+  const btn = $('#f-submit'), label = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = d['f.sending'];
+  try {
+    const res = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    if (!res.ok) throw new Error(res.status);
+    $('#form').classList.add('hidden');
+    $('#form-ok').classList.remove('hidden');
+  } catch (_) {
+    err.innerHTML = d['f.fail'];
+    $$('.sms-link', err).forEach(a => a.href = 'sms:' + TEL);
+    err.classList.remove('hidden');
+  } finally {
+    btn.disabled = false; btn.innerHTML = label;
+  }
 });
 
 const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
@@ -701,6 +770,5 @@ $$('.rv').forEach(el => io.observe(el));
 let saved = null;
 try { saved = localStorage.getItem('vg-lang'); } catch(e){}
 setLang(saved || (navigator.language || '').slice(0,2));
-setMode('hire');
 </script></body>
 </html>
