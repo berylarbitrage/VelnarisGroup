@@ -6,7 +6,8 @@ Static site, no build step: `index.html` + `logo.svg`. Trilingual (EN / ES / 中
 
 ## Settings
 In `index.html`, the `SITE` object near the top of the `<script>`:
-- `phone` — shown in the top bar, contact section and footer; the contact form opens a text message to this number.
+- `phone` — text-only number (no calls) shown in the top bar, contact section and footer; the form opens a text message to it.
+- `email` — leave empty to hide all email options; when set, an "Email us" button and "Send by email" option appear.
 
 ## Deploy
 Served by GitHub Pages from `main` (root): https://berylarbitrage.github.io/VelnarisGroup/

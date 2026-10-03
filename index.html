@@ -176,6 +176,7 @@ html[lang="zh"] h2{font-weight:900;line-height:1.2}
 .info dd{font-size:1.2rem;font-weight:600}
 .info dd a:hover{color:var(--orange)}
 .big-phone{font-family:var(--head);font-size:2.2rem !important;letter-spacing:.02em}
+.no-call{color:#AAA;font-size:.9rem;margin-top:6px}
 .call-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 .btn-w{background:transparent;color:#fff;border-color:#fff}.btn-w:hover{background:#fff;color:var(--ink)}
 form{background:var(--concrete-2);color:var(--ink);padding:30px;border-top:8px solid var(--orange)}
@@ -249,7 +250,7 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
 <header>
   <div class="stripe"></div>
   <div class="topbar"><div class="wrap tb">
-    <a class="tb-phone" href="tel:+12245915888">☎ (224) 591-5888</a>
+    <a class="tb-phone sms-link" href="sms:+12245915888"><span data-i="ct.textOnly">Text only</span> · (224) 591-5888</a>
     <div class="lang" role="group" aria-label="Language">
       <button data-lang="en" aria-pressed="true">EN</button>
       <button data-lang="es" aria-pressed="false">ES</button>
@@ -426,8 +427,10 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
       <div class="contact-grid">
         <div class="info rv">
           <dl>
-            <div><dt data-i="ct.phone">Phone</dt><dd class="big-phone"><a id="phone-link" href="#"></a></dd>
-              <div class="call-row"><a class="btn btn-o" id="call-btn" href="#"><span data-i="ct.call">Call</span></a><a class="btn btn-w" id="text-btn" href="#"><span data-i="ct.text">Text</span></a></div></div>
+            <div><dt data-i="ct.phone">Text</dt><dd class="big-phone"><a class="sms-link" id="phone-link" href="#"></a></dd>
+              <p class="no-call" data-i="ct.noCall">Text messages only. Please don't call; we can't answer calls.</p>
+              <div class="call-row"><a class="btn btn-o sms-link" href="#"><span data-i="ct.text">Text us</span> →</a><a class="btn btn-w hidden email-only" id="email-btn" href="#"><span data-i="ct.emailBtn">Email us</span></a></div></div>
+            <div class="hidden email-only"><dt data-i="ct.email">Email</dt><dd><a id="email-link" href="#"></a></dd></div>
             <div><dt data-i="ct.hours">Hours</dt><dd data-i="ct.hoursV"></dd></div>
           </dl>
         </div>
@@ -451,7 +454,10 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
           </div>
           <div class="form-foot">
             <small data-i="f.note"></small>
-            <button class="btn btn-o" type="submit"><span data-i="f.send">Send</span> →</button>
+            <div class="call-row" style="margin:0">
+              <button class="btn btn-w hidden email-only" type="submit" value="email" style="color:var(--ink);border-color:var(--ink)"><span data-i="f.sendEmail">Send by email</span></button>
+              <button class="btn btn-o" type="submit" value="sms"><span data-i="f.send">Send by text</span> →</button>
+            </div>
           </div>
         </form>
       </div>
@@ -464,7 +470,7 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
   <div class="wrap">
     <div class="foot">
       <div class="foot-word">VELNARIS<span>/</span></div>
-      <div>Velnaris Group LLC<br><a href="tel:+12245915888">(224) 591-5888</a></div>
+      <div>Velnaris Group LLC<br><a class="sms-link" href="sms:+12245915888">Text (224) 591-5888</a></div>
     </div>
     <div class="foot-bot">
       <span>© <span id="yr"></span> Velnaris Group LLC. <span data-i="foot.rights"></span></span>
@@ -476,7 +482,8 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
 <script>
 /* ---- Site settings: edit these ---- */
 const SITE = {
-  phone: '(224) 591-5888'
+  phone: '(224) 591-5888',  // text messages only, no calls
+  email: ''                   // e.g. 'hello@velnarisgroup.com' — email options stay hidden while empty
 };
 
 const T = {
@@ -521,12 +528,12 @@ en:{
  'area.lede':'Headquartered in Illinois, we staff warehouses, plants and distribution centers in Illinois, Texas, Georgia and New York — with the same screening and follow-up everywhere.',
  'st.il':'Illinois','st.tx':'Texas','st.ga':'Georgia','st.ny':'New York','st.hq':'Headquarters','st.atl':'Atlanta metro','st.svc':'Service area',
  'ct.title':"Let's get you <em>covered</em>.",'ct.lede':"Send a request and we'll reply within one business day.",
- 'ct.call':'Call','ct.text':'Text','ct.phone':'Phone','ct.hours':'Hours','ct.hoursV':'Mon – Fri, 8:00 – 17:00',
+ 'ct.text':'Text us','ct.phone':'Text','ct.textOnly':'Text only','ct.noCall':"Text messages only. Please don't call; we can't answer calls.",'ct.email':'Email','ct.emailBtn':'Email us','ct.hours':'Hours','ct.hoursV':'Mon – Fri, 8:00 – 17:00',
  'ct.tabHire':'I need staff','ct.tabWork':'I need work',
  'f.name':'Full name','f.phone':'Phone','f.email':'Email','f.company':'Company','f.headcount':'Workers needed','f.start':'Start date',
  'f.lang':'Preferred language','f.shift':'Preferred shift','f.any':'Any','f.day':'Day','f.eve':'Evening','f.night':'Night',
  'f.msg':'Details','f.msgPhHire':'Roles, shift times, location, pay rate…','f.msgPhWork':'Jobs you have done, certifications (e.g. forklift), where you live…',
- 'f.note':'Submitting opens your text messages with the details filled in. Or just call us.','f.send':'Send','f.req':'Please enter your name and phone number.',
+ 'f.note':'Submitting opens your text messages with the details filled in.','f.send':'Send by text','f.sendEmail':'Send by email','f.req':'Please enter your name and phone number.',
  'subj.hire':'Staffing request','subj.work':'Job application',
  'foot.rights':'All rights reserved.','foot.eeo':'Velnaris Group is an equal opportunity employer.'
 },
@@ -571,12 +578,12 @@ es:{
  'area.lede':'Con sede en Illinois, proveemos personal a almacenes, plantas y centros de distribución en Illinois, Texas, Georgia y Nueva York, con la misma selección y seguimiento en todos.',
  'st.il':'Illinois','st.tx':'Texas','st.ga':'Georgia','st.ny':'Nueva York','st.hq':'Sede','st.atl':'Área de Atlanta','st.svc':'Zona de servicio',
  'ct.title':'Lo <em>cubrimos</em>.','ct.lede':'Envíe su solicitud y le respondemos en un día hábil.',
- 'ct.call':'Llamar','ct.text':'Mensaje','ct.phone':'Teléfono','ct.hours':'Horario','ct.hoursV':'Lun – Vie, 8:00 – 17:00',
+ 'ct.text':'Envíe un mensaje','ct.phone':'Mensaje de texto','ct.textOnly':'Solo mensajes','ct.noCall':'Solo mensajes de texto. Por favor no llame; no podemos contestar llamadas.','ct.email':'Correo','ct.emailBtn':'Escríbanos','ct.hours':'Horario','ct.hoursV':'Lun – Vie, 8:00 – 17:00',
  'ct.tabHire':'Necesito personal','ct.tabWork':'Necesito trabajo',
  'f.name':'Nombre completo','f.phone':'Teléfono','f.email':'Correo','f.company':'Empresa','f.headcount':'Trabajadores necesarios','f.start':'Fecha de inicio',
  'f.lang':'Idioma preferido','f.shift':'Turno preferido','f.any':'Cualquiera','f.day':'Día','f.eve':'Tarde','f.night':'Noche',
  'f.msg':'Detalles','f.msgPhHire':'Puestos, horarios, ubicación, tarifa…','f.msgPhWork':'Trabajos que ha hecho, certificaciones (p. ej. montacargas), dónde vive…',
- 'f.note':'Al enviar se abren sus mensajes de texto con los datos llenos. O llámenos.','f.send':'Enviar','f.req':'Escriba su nombre y teléfono, por favor.',
+ 'f.note':'Al enviar se abren sus mensajes de texto con los datos llenos.','f.send':'Enviar por mensaje','f.sendEmail':'Enviar por correo','f.req':'Escriba su nombre y teléfono, por favor.',
  'subj.hire':'Solicitud de personal','subj.work':'Solicitud de empleo',
  'foot.rights':'Todos los derechos reservados.','foot.eeo':'Velnaris Group es un empleador que ofrece igualdad de oportunidades.'
 },
@@ -621,12 +628,12 @@ zh:{
  'area.lede':'总部位于伊利诺伊州，为伊利诺伊州、德州、佐治亚州（亚特兰大）和纽约州的仓库、工厂和配送中心提供用工——每个地方都是同样的审核和跟进标准。',
  'st.il':'伊利诺伊州','st.tx':'德克萨斯州','st.ga':'佐治亚州','st.ny':'纽约州','st.hq':'总部','st.atl':'亚特兰大地区','st.svc':'服务区域',
  'ct.title':'用工的事，<em>交给我们</em>。','ct.lede':'提交需求，我们会在一个工作日内回复。',
- 'ct.call':'打电话','ct.text':'发短信','ct.phone':'电话','ct.hours':'办公时间','ct.hoursV':'周一至周五 8:00 – 17:00',
+ 'ct.text':'发短信','ct.phone':'短信','ct.textOnly':'仅限短信','ct.noCall':'只接收短信，请勿来电，电话无人接听。','ct.email':'邮箱','ct.emailBtn':'发邮件','ct.hours':'办公时间','ct.hoursV':'周一至周五 8:00 – 17:00',
  'ct.tabHire':'我要招人','ct.tabWork':'我要找工作',
  'f.name':'姓名','f.phone':'电话','f.email':'邮箱','f.company':'公司名称','f.headcount':'需要人数','f.start':'开工日期',
  'f.lang':'沟通语言','f.shift':'想上的班次','f.any':'都可以','f.day':'白班','f.eve':'晚班','f.night':'夜班',
  'f.msg':'详细说明','f.msgPhHire':'岗位、班次时间、地点、时薪…','f.msgPhWork':'做过的工作、证书（如叉车证）、住在哪里…',
- 'f.note':'提交后会打开手机短信，内容已自动填好。也可以直接打电话。','f.send':'提交','f.req':'请填写姓名和电话。',
+ 'f.note':'提交后会打开手机短信，内容已自动填好。','f.send':'用短信发送','f.sendEmail':'用邮件发送','f.req':'请填写姓名和电话。',
  'subj.hire':'用工申请','subj.work':'求职报名',
  'foot.rights':'版权所有。','foot.eeo':'Velnaris Group 是平等机会雇主。'
 }};
@@ -666,8 +673,12 @@ $$('#nav a').forEach(a => a.addEventListener('click', () => { nav.classList.remo
 
 const TEL = '+1' + SITE.phone.replace(/\D/g, '');
 $('#phone-link').textContent = SITE.phone;
-$('#phone-link').href = $('#call-btn').href = 'tel:' + TEL;
-$('#text-btn').href = 'sms:' + TEL;
+$$('.sms-link').forEach(a => a.href = 'sms:' + TEL);
+if (SITE.email) {
+  $$('.email-only').forEach(e => e.classList.remove('hidden'));
+  $('#email-link').textContent = SITE.email;
+  $('#email-link').href = $('#email-btn').href = 'mailto:' + SITE.email;
+}
 $('#yr').textContent = new Date().getFullYear();
 
 $('#form').addEventListener('submit', e => {
@@ -679,7 +690,9 @@ $('#form').addEventListener('submit', e => {
     : ['name','phone','email','language','shift','message'];
   const body = keys.filter(k => (f.get(k) || '').trim()).map(k => `${k}: ${f.get(k)}`).join('\n');
   const subject = `${d['subj.' + mode]} — ${f.get('name')}`;
-  location.href = `sms:${TEL}?&body=${encodeURIComponent(subject + '\n' + body)}`;
+  location.href = (e.submitter && e.submitter.value === 'email' && SITE.email)
+    ? `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    : `sms:${TEL}?&body=${encodeURIComponent(subject + '\n' + body)}`;
 });
 
 const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
