@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velnaris Group — Staffing for Chicagoland</title>
-<meta name="description" content="Velnaris Group LLC is a staffing company in Roselle, Illinois, supplying screened workers for warehouse, manufacturing, logistics and food production across Chicagoland.">
+<title>Velnaris Group — Industrial Staffing in IL, TX, GA &amp; NY</title>
+<meta name="description" content="Velnaris Group LLC is a staffing company supplying screened workers for warehouse, manufacturing, logistics and food production in Illinois, Texas, Georgia and New York.">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +43,7 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
 .brand .grp{color:inherit}
 @media (max-width:1440px){.grp{display:none}}.brand .grp span{color:var(--orange)}
 .topbar{background:#111;border-bottom:1px solid #2A2A2A}
+.tb-phone{color:#fff;font-weight:700;letter-spacing:.06em}.tb-phone:hover{color:var(--orange)}
 .tb{display:flex;justify-content:space-between;align-items:center;height:38px;gap:12px;font-size:.8rem;color:#8A8A8A;letter-spacing:.04em}
 nav ul{display:flex;gap:20px;list-style:none}
 nav a,.btn{white-space:nowrap}
@@ -154,11 +155,15 @@ html[lang="zh"] h2{font-weight:900;line-height:1.2}
 .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .area-grid h2{margin:0 0 16px}
 .area-grid p{color:var(--steel);font-weight:500}
-.towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-.towns span{background:var(--ink);color:#fff;padding:7px 12px;font-weight:700;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase}
-.towns span:first-child{background:var(--orange);color:var(--ink)}
-.map{border:3px solid var(--ink);background:var(--concrete);aspect-ratio:1/1}
-.map svg{width:100%;height:100%}
+.states{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.st{background:var(--concrete);border:3px solid var(--ink);padding:24px 22px;position:relative;transition:transform .2s,box-shadow .2s}
+.st:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.st b{display:block;font-family:var(--head);font-weight:700;font-size:4rem;line-height:.9;color:var(--ink)}
+.st h3{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:1.25rem;margin:10px 0 4px}
+.st span{font-size:.88rem;font-weight:600;color:var(--muted)}
+.st.hq{background:var(--ink);color:#fff}
+.st.hq b{color:var(--orange)}
+.st.hq span{color:var(--orange)}
 
 /* contact */
 .contact{background:var(--ink);color:#fff}
@@ -170,6 +175,9 @@ html[lang="zh"] h2{font-weight:900;line-height:1.2}
 .info dt{font-family:var(--head);color:var(--orange);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;margin-bottom:4px}
 .info dd{font-size:1.2rem;font-weight:600}
 .info dd a:hover{color:var(--orange)}
+.big-phone{font-family:var(--head);font-size:2.2rem !important;letter-spacing:.02em}
+.call-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn-w{background:transparent;color:#fff;border-color:#fff}.btn-w:hover{background:#fff;color:var(--ink)}
 form{background:var(--concrete-2);color:var(--ink);padding:30px;border-top:8px solid var(--orange)}
 .tabs{display:grid;grid-template-columns:1fr 1fr;border:3px solid var(--ink);margin-bottom:22px}
 .tabs button{border:0;background:none;padding:12px;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1rem;cursor:pointer;color:var(--ink)}
@@ -219,8 +227,6 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
   .bar{height:66px}
   .bar .btn{display:none}
   nav.open{padding:16px}
-  .tb-addr{display:none}
-  .tb{justify-content:flex-end}
   .brand{font-size:1.25rem}
   .right{gap:8px}
   .menu-toggle{width:40px;height:40px}
@@ -243,7 +249,7 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
 <header>
   <div class="stripe"></div>
   <div class="topbar"><div class="wrap tb">
-    <span class="tb-addr">18 Congress Cir W, Roselle, IL 60172</span>
+    <a class="tb-phone" href="tel:+12245915888">☎ (224) 591-5888</a>
     <div class="lang" role="group" aria-label="Language">
       <button data-lang="en" aria-pressed="true">EN</button>
       <button data-lang="es" aria-pressed="false">ES</button>
@@ -400,33 +406,12 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
         <span class="sec-no">06 /</span>
         <h2 data-i="area.title"></h2>
         <p data-i="area.lede"></p>
-        <div class="towns">
-          <span>Roselle</span><span>Itasca</span><span>Schaumburg</span><span>Bloomingdale</span><span>Elk Grove Village</span><span>Wood Dale</span><span>Bensenville</span><span>Addison</span><span>Carol Stream</span>
-        </div>
       </div>
-      <div class="map rv" aria-hidden="true">
-        <svg viewBox="0 0 400 400">
-          <defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#BDBAB3" stroke-width="1"/></pattern></defs>
-          <rect width="400" height="400" fill="url(#g)"/>
-          <path d="M0 120 C120 140 220 90 400 130" stroke="#1B1B1B" stroke-width="12" fill="none"/>
-          <path d="M0 120 C120 140 220 90 400 130" stroke="#FFC400" stroke-width="2" stroke-dasharray="10 10" fill="none"/>
-          <path d="M150 0 C170 140 160 260 190 400" stroke="#1B1B1B" stroke-width="6" fill="none" opacity=".35"/>
-          <path d="M0 290 C140 270 260 300 400 260" stroke="#1B1B1B" stroke-width="6" fill="none" opacity=".35"/>
-          <circle cx="178" cy="200" r="110" fill="#FF7A00" opacity=".12"/>
-          <circle cx="178" cy="200" r="110" fill="none" stroke="#FF7A00" stroke-width="2" stroke-dasharray="6 6"/>
-          <rect x="166" y="188" width="24" height="24" fill="#FF7A00" stroke="#1B1B1B" stroke-width="3"/>
-          <rect x="198" y="168" width="96" height="28" fill="#1B1B1B"/>
-          <text x="208" y="188" font-family="Oswald,Arial Narrow,sans-serif" font-weight="700" font-size="17" fill="#FF7A00">ROSELLE</text>
-          <g font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#1B1B1B" letter-spacing="1">
-            <rect x="106" y="106" width="8" height="8"/><text x="58" y="98">SCHAUMBURG</text>
-            <rect x="266" y="146" width="8" height="8"/><text x="250" y="138">ELK GROVE VLG.</text>
-            <rect x="241" y="226" width="8" height="8"/><text x="255" y="235">WOOD DALE</text>
-            <rect x="296" y="256" width="8" height="8"/><text x="290" y="282">BENSENVILLE</text>
-            <rect x="216" y="296" width="8" height="8"/><text x="170" y="322">ADDISON</text>
-            <rect x="106" y="256" width="8" height="8"/><text x="46" y="282">BLOOMINGDALE</text>
-          </g>
-          <g transform="translate(360 40)" fill="#1B1B1B"><path d="M0 -14 L7 6 L0 2 L-7 6Z"/><text x="-4" y="22" font-family="Barlow,sans-serif" font-weight="700" font-size="11">N</text></g>
-        </svg>
+      <div class="states rv">
+        <div class="st hq"><b>IL</b><h3 data-i="st.il">Illinois</h3><span data-i="st.hq">Headquarters</span></div>
+        <div class="st"><b>TX</b><h3 data-i="st.tx">Texas</h3><span data-i="st.svc">Service area</span></div>
+        <div class="st"><b>GA</b><h3 data-i="st.ga">Georgia</h3><span data-i="st.atl">Atlanta metro</span></div>
+        <div class="st"><b>NY</b><h3 data-i="st.ny">New York</h3><span data-i="st.svc">Service area</span></div>
       </div>
     </div>
   </section>
@@ -441,9 +426,8 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
       <div class="contact-grid">
         <div class="info rv">
           <dl>
-            <div><dt data-i="ct.office">Office</dt><dd>18 Congress Cir W<br>Roselle, IL 60172</dd></div>
-            <div><dt data-i="ct.email">Email</dt><dd><a id="email-link" href="#"></a></dd></div>
-            <div id="phone-row" class="hidden"><dt data-i="ct.phone">Phone</dt><dd><a id="phone-link" href="#"></a></dd></div>
+            <div><dt data-i="ct.phone">Phone</dt><dd class="big-phone"><a id="phone-link" href="#"></a></dd>
+              <div class="call-row"><a class="btn btn-o" id="call-btn" href="#"><span data-i="ct.call">Call</span></a><a class="btn btn-w" id="text-btn" href="#"><span data-i="ct.text">Text</span></a></div></div>
             <div><dt data-i="ct.hours">Hours</dt><dd data-i="ct.hoursV"></dd></div>
           </dl>
         </div>
@@ -480,7 +464,7 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
   <div class="wrap">
     <div class="foot">
       <div class="foot-word">VELNARIS<span>/</span></div>
-      <div>Velnaris Group LLC<br>18 Congress Cir W, Roselle, IL 60172</div>
+      <div>Velnaris Group LLC<br><a href="tel:+12245915888">(224) 591-5888</a></div>
     </div>
     <div class="foot-bot">
       <span>© <span id="yr"></span> Velnaris Group LLC. <span data-i="foot.rights"></span></span>
@@ -492,8 +476,7 @@ footer{background:#111;color:#8A8A8A;font-size:.9rem}
 <script>
 /* ---- Site settings: edit these ---- */
 const SITE = {
-  email: 'info@velnarisgroup.com',   // TODO: confirm real mailbox
-  phone: ''                          // e.g. '(630) 555-0100' — row stays hidden while empty
+  phone: '(224) 591-5888'
 };
 
 const T = {
@@ -502,7 +485,7 @@ en:{
  'cta.hire':'Request staff','cta.work':"I'm looking for work",'cta.apply':'Apply now',
  'hero.kicker':'Warehouse · Manufacturing · Logistics','hero.panel':'What we staff',
  'hero.title':'Crews ready.<br><em>Shift one.</em>',
- 'hero.lede':'Velnaris Group connects Chicagoland employers with dependable workers for warehouse, manufacturing, logistics and food production — and treats every worker like someone worth keeping.',
+ 'hero.lede':'Velnaris Group connects employers in Illinois, Texas, Georgia and New York with dependable workers for warehouse, manufacturing, logistics and food production — and treats every worker like someone worth keeping.',
  'hero.tagT':'Day, swing & night shifts','hero.tagD':'Short-notice orders filled from a vetted local pool.',
  ticker:['Warehouse','Manufacturing','Logistics','Food production','Fulfillment','Forklift','Assembly','Packaging','General labor'],
  'svc.title':'Staffing that bends to <em>your</em> schedule.',
@@ -534,15 +517,16 @@ en:{
  'pr.1t':'Reliable.','pr.1d':"We confirm every shift before it starts and tell you early if something changes — never on the morning of.",
  'pr.2t':'Compliant.','pr.2d':"Work-authorization checks, accurate time records and payroll handled by the book, so you aren't left exposed.",
  'pr.3t':'Respectful.','pr.3d':"Workers who are paid on time and treated fairly come back. That's how we keep your crew consistent.",
- 'area.title':'Rooted in the <em>west suburbs</em>.',
- 'area.lede':"Based in Roselle, we serve employers across DuPage and northwest Cook County, including the O'Hare industrial corridor.",
+ 'area.title':'Four states. <em>One standard.</em>',
+ 'area.lede':'Headquartered in Illinois, we staff warehouses, plants and distribution centers in Illinois, Texas, Georgia and New York — with the same screening and follow-up everywhere.',
+ 'st.il':'Illinois','st.tx':'Texas','st.ga':'Georgia','st.ny':'New York','st.hq':'Headquarters','st.atl':'Atlanta metro','st.svc':'Service area',
  'ct.title':"Let's get you <em>covered</em>.",'ct.lede':"Send a request and we'll reply within one business day.",
- 'ct.office':'Office','ct.email':'Email','ct.phone':'Phone','ct.hours':'Hours','ct.hoursV':'Mon – Fri, 8:00 – 17:00',
+ 'ct.call':'Call','ct.text':'Text','ct.phone':'Phone','ct.hours':'Hours','ct.hoursV':'Mon – Fri, 8:00 – 17:00',
  'ct.tabHire':'I need staff','ct.tabWork':'I need work',
  'f.name':'Full name','f.phone':'Phone','f.email':'Email','f.company':'Company','f.headcount':'Workers needed','f.start':'Start date',
  'f.lang':'Preferred language','f.shift':'Preferred shift','f.any':'Any','f.day':'Day','f.eve':'Evening','f.night':'Night',
  'f.msg':'Details','f.msgPhHire':'Roles, shift times, location, pay rate…','f.msgPhWork':'Jobs you have done, certifications (e.g. forklift), where you live…',
- 'f.note':'Submitting opens your email app with the details filled in.','f.send':'Send','f.req':'Please enter your name and phone number.',
+ 'f.note':'Submitting opens your text messages with the details filled in. Or just call us.','f.send':'Send','f.req':'Please enter your name and phone number.',
  'subj.hire':'Staffing request','subj.work':'Job application',
  'foot.rights':'All rights reserved.','foot.eeo':'Velnaris Group is an equal opportunity employer.'
 },
@@ -551,7 +535,7 @@ es:{
  'cta.hire':'Solicitar personal','cta.work':'Busco trabajo','cta.apply':'Aplicar ahora',
  'hero.kicker':'Almacén · Manufactura · Logística','hero.panel':'A quién colocamos',
  'hero.title':'Equipo listo.<br><em>Primer turno.</em>',
- 'hero.lede':'Velnaris Group conecta a empresas del área de Chicago con trabajadores confiables para almacenes, manufactura, logística y producción de alimentos, y trata a cada trabajador como alguien que vale la pena conservar.',
+ 'hero.lede':'Velnaris Group conecta a empresas de Illinois, Texas, Georgia y Nueva York con trabajadores confiables para almacenes, manufactura, logística y producción de alimentos, y trata a cada trabajador como alguien que vale la pena conservar.',
  'hero.tagT':'Turnos de día, tarde y noche','hero.tagD':'Pedidos urgentes cubiertos con personal local verificado.',
  ticker:['Almacén','Manufactura','Logística','Alimentos','Fulfillment','Montacargas','Ensamblaje','Empaque','Labor general'],
  'svc.title':'Personal que se adapta a <em>su</em> horario.',
@@ -583,15 +567,16 @@ es:{
  'pr.1t':'Confiables.','pr.1d':'Confirmamos cada turno antes de que empiece y avisamos con tiempo si algo cambia, nunca la misma mañana.',
  'pr.2t':'En regla.','pr.2d':'Verificación de autorización de empleo, registros de horas exactos y nómina correcta, para que usted no quede expuesto.',
  'pr.3t':'Respetuosos.','pr.3d':'Los trabajadores que cobran a tiempo y reciben buen trato regresan. Así mantenemos estable su equipo.',
- 'area.title':'Arraigados en los <em>suburbios del oeste</em>.',
- 'area.lede':'Desde Roselle atendemos a empresas en DuPage y el noroeste del condado de Cook, incluido el corredor industrial de O\'Hare.',
+ 'area.title':'Cuatro estados. <em>Un mismo estándar.</em>',
+ 'area.lede':'Con sede en Illinois, proveemos personal a almacenes, plantas y centros de distribución en Illinois, Texas, Georgia y Nueva York, con la misma selección y seguimiento en todos.',
+ 'st.il':'Illinois','st.tx':'Texas','st.ga':'Georgia','st.ny':'Nueva York','st.hq':'Sede','st.atl':'Área de Atlanta','st.svc':'Zona de servicio',
  'ct.title':'Lo <em>cubrimos</em>.','ct.lede':'Envíe su solicitud y le respondemos en un día hábil.',
- 'ct.office':'Oficina','ct.email':'Correo','ct.phone':'Teléfono','ct.hours':'Horario','ct.hoursV':'Lun – Vie, 8:00 – 17:00',
+ 'ct.call':'Llamar','ct.text':'Mensaje','ct.phone':'Teléfono','ct.hours':'Horario','ct.hoursV':'Lun – Vie, 8:00 – 17:00',
  'ct.tabHire':'Necesito personal','ct.tabWork':'Necesito trabajo',
  'f.name':'Nombre completo','f.phone':'Teléfono','f.email':'Correo','f.company':'Empresa','f.headcount':'Trabajadores necesarios','f.start':'Fecha de inicio',
  'f.lang':'Idioma preferido','f.shift':'Turno preferido','f.any':'Cualquiera','f.day':'Día','f.eve':'Tarde','f.night':'Noche',
  'f.msg':'Detalles','f.msgPhHire':'Puestos, horarios, ubicación, tarifa…','f.msgPhWork':'Trabajos que ha hecho, certificaciones (p. ej. montacargas), dónde vive…',
- 'f.note':'Al enviar se abre su aplicación de correo con los datos llenos.','f.send':'Enviar','f.req':'Escriba su nombre y teléfono, por favor.',
+ 'f.note':'Al enviar se abren sus mensajes de texto con los datos llenos. O llámenos.','f.send':'Enviar','f.req':'Escriba su nombre y teléfono, por favor.',
  'subj.hire':'Solicitud de personal','subj.work':'Solicitud de empleo',
  'foot.rights':'Todos los derechos reservados.','foot.eeo':'Velnaris Group es un empleador que ofrece igualdad de oportunidades.'
 },
@@ -600,7 +585,7 @@ zh:{
  'cta.hire':'申请用工','cta.work':'我要找工作','cta.apply':'立即报名',
  'hero.kicker':'仓储 · 制造 · 物流','hero.panel':'我们派遣的岗位',
  'hero.title':'人手到位，<br><em>开工即上岗。</em>',
- 'hero.lede':'Velnaris Group 为芝加哥地区的企业提供可靠的仓储、制造、物流和食品生产用工——也把每一位工人当作值得长期留住的伙伴。',
+ 'hero.lede':'Velnaris Group 为伊利诺伊州、德州、佐治亚州和纽约州的企业提供可靠的仓储、制造、物流和食品生产用工——也把每一位工人当作值得长期留住的伙伴。',
  'hero.tagT':'白班、中班、夜班','hero.tagD':'急单也能从本地已审核人员中快速补齐。',
  ticker:['仓储','制造','物流','食品生产','电商履约','叉车','组装','包装','普工'],
  'svc.title':'按<em>您的</em>排班来派人。',
@@ -632,15 +617,16 @@ zh:{
  'pr.1t':'靠谱。','pr.1d':'每个班次开工前都会确认；有变动提前通知，绝不拖到当天早上。',
  'pr.2t':'合规。','pr.2d':'工作资格核验、准确的工时记录和规范的薪资发放，不让您承担风险。',
  'pr.3t':'尊重。','pr.3d':'工资按时发、待人公平，工人才会回来。这样您的班组才稳定。',
- 'area.title':'扎根<em>西郊</em>。',
- 'area.lede':'总部位于 Roselle，服务 DuPage 县和库克县西北部的企业，包括奥黑尔机场周边工业区。',
+ 'area.title':'四个州，<em>同一个标准。</em>',
+ 'area.lede':'总部位于伊利诺伊州，为伊利诺伊州、德州、佐治亚州（亚特兰大）和纽约州的仓库、工厂和配送中心提供用工——每个地方都是同样的审核和跟进标准。',
+ 'st.il':'伊利诺伊州','st.tx':'德克萨斯州','st.ga':'佐治亚州','st.ny':'纽约州','st.hq':'总部','st.atl':'亚特兰大地区','st.svc':'服务区域',
  'ct.title':'用工的事，<em>交给我们</em>。','ct.lede':'提交需求，我们会在一个工作日内回复。',
- 'ct.office':'办公室','ct.email':'邮箱','ct.phone':'电话','ct.hours':'办公时间','ct.hoursV':'周一至周五 8:00 – 17:00',
+ 'ct.call':'打电话','ct.text':'发短信','ct.phone':'电话','ct.hours':'办公时间','ct.hoursV':'周一至周五 8:00 – 17:00',
  'ct.tabHire':'我要招人','ct.tabWork':'我要找工作',
  'f.name':'姓名','f.phone':'电话','f.email':'邮箱','f.company':'公司名称','f.headcount':'需要人数','f.start':'开工日期',
  'f.lang':'沟通语言','f.shift':'想上的班次','f.any':'都可以','f.day':'白班','f.eve':'晚班','f.night':'夜班',
  'f.msg':'详细说明','f.msgPhHire':'岗位、班次时间、地点、时薪…','f.msgPhWork':'做过的工作、证书（如叉车证）、住在哪里…',
- 'f.note':'提交后会打开您的邮件应用，内容已自动填好。','f.send':'提交','f.req':'请填写姓名和电话。',
+ 'f.note':'提交后会打开手机短信，内容已自动填好。也可以直接打电话。','f.send':'提交','f.req':'请填写姓名和电话。',
  'subj.hire':'用工申请','subj.work':'求职报名',
  'foot.rights':'版权所有。','foot.eeo':'Velnaris Group 是平等机会雇主。'
 }};
@@ -678,13 +664,10 @@ const nav = $('#nav'), mt = $('.menu-toggle');
 mt.addEventListener('click', () => { const o = nav.classList.toggle('open'); mt.setAttribute('aria-expanded', o); });
 $$('#nav a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); mt.setAttribute('aria-expanded', false); }));
 
-$('#email-link').textContent = SITE.email;
-$('#email-link').href = 'mailto:' + SITE.email;
-if (SITE.phone) {
-  $('#phone-row').classList.remove('hidden');
-  $('#phone-link').textContent = SITE.phone;
-  $('#phone-link').href = 'tel:' + SITE.phone.replace(/[^\d+]/g, '');
-}
+const TEL = '+1' + SITE.phone.replace(/\D/g, '');
+$('#phone-link').textContent = SITE.phone;
+$('#phone-link').href = $('#call-btn').href = 'tel:' + TEL;
+$('#text-btn').href = 'sms:' + TEL;
 $('#yr').textContent = new Date().getFullYear();
 
 $('#form').addEventListener('submit', e => {
@@ -696,7 +679,7 @@ $('#form').addEventListener('submit', e => {
     : ['name','phone','email','language','shift','message'];
   const body = keys.filter(k => (f.get(k) || '').trim()).map(k => `${k}: ${f.get(k)}`).join('\n');
   const subject = `${d['subj.' + mode]} — ${f.get('name')}`;
-  location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  location.href = `sms:${TEL}?&body=${encodeURIComponent(subject + '\n' + body)}`;
 });
 
 const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
