@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velnaris Group — Staffing for Chicagoland</title>
+<meta name="description" content="Velnaris Group LLC is a staffing company in Roselle, Illinois, placing reliable people in warehouse, manufacturing, logistics and food production roles across Chicagoland.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EDE2;
+  --paper-2:#EAE2D3;
+  --ink:#16201B;
+  --ink-2:#3C4740;
+  --muted:#6E776F;
+  --line:#CFC5B3;
+  --rust:#D9542B;
+  --rust-deep:#B8411D;
+  --moss:#5B6B4A;
+  --sand:#E4C9A0;
+  --serif:'Fraunces',Georgia,'Noto Sans SC',serif;
+  --sans:'Manrope','Noto Sans SC',system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[lang="zh"] body{font-size:16px}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+::selection{background:var(--rust);color:var(--paper)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(243,237,226,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:38px;height:38px}
+.brand b{font-family:var(--serif);font-weight:600;font-size:1.35rem;letter-spacing:-.01em}
+.brand small{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:-4px}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--ink-2);position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--rust);transition:width .25s}
+nav a:hover::after{width:100%}
+.right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;font:600 .75rem var(--sans);padding:6px 11px;cursor:pointer;color:var(--ink)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 .95rem var(--sans);text-decoration:none;padding:14px 22px;border-radius:999px;border:1.5px solid var(--ink);cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--ink);color:var(--paper)}
+.btn-solid:hover{background:var(--rust);border-color:var(--rust)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{transition:transform .2s}.btn:hover .arr{transform:translateX(4px)}
+.menu-toggle{display:none;background:none;border:1.5px solid var(--ink);border-radius:999px;width:42px;height:42px;cursor:pointer;font-size:1.1rem}
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 56px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:end}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--moss)}
+.kicker::before{content:"";width:28px;height:2px;background:var(--rust)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.7rem,6.4vw,5.6rem);line-height:.98;letter-spacing:-.03em;margin:22px 0 26px}
+h1 em{font-style:italic;color:var(--rust)}
+html[lang="zh"] h1{line-height:1.15;letter-spacing:0;font-weight:600}
+.lede{font-size:1.15rem;color:var(--ink-2);max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-art{position:relative;aspect-ratio:4/5;border-radius:220px 220px 18px 18px;background:var(--ink);overflow:hidden}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.tag{position:absolute;left:20px;bottom:24px;background:var(--paper);border:1.5px solid var(--ink);border-radius:14px;padding:14px 18px;font-size:.85rem;max-width:230px;box-shadow:6px 6px 0 var(--rust)}
+.tag b{display:block;font-family:var(--serif);font-size:1.05rem;font-weight:600}
+
+/* ---------- ticker ---------- */
+.ticker{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:48px;padding:18px 0;animation:slide 38s linear infinite;font-family:var(--serif);font-size:1.5rem;font-style:italic}
+.ticker-track span::after{content:"✦";font-style:normal;color:var(--rust);margin-left:48px;font-size:1rem;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+/* ---------- sections ---------- */
+section{padding:104px 0}
+.sec-head{display:grid;grid-template-columns:120px 1fr;gap:24px;margin-bottom:56px}
+.num{font-family:var(--serif);font-size:1rem;color:var(--rust);border-top:2px solid var(--rust);padding-top:10px;height:max-content}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.04;letter-spacing:-.02em;max-width:16em}
+h2 em{font-style:italic;color:var(--moss)}
+html[lang="zh"] em,html[lang="zh"] .ticker-track,html[lang="zh"] .pr h3{font-style:normal}
+html[lang="zh"] h2{line-height:1.25;letter-spacing:0;font-weight:600}
+.sec-head p{color:var(--ink-2);margin-top:16px;max-width:38em}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+.svc{padding:30px 26px 36px;border-right:1px solid var(--line);transition:background .25s}
+.svc:last-child{border-right:0}
+.svc:hover{background:var(--paper-2)}
+.svc i{font-style:normal;font-family:var(--serif);color:var(--muted);font-size:.9rem}
+.svc h3{font-family:var(--serif);font-weight:600;font-size:1.45rem;line-height:1.15;margin:44px 0 12px}
+.svc p{font-size:.95rem;color:var(--ink-2)}
+
+/* industries */
+.ind{background:var(--paper-2)}
+.ind-list{list-style:none;border-top:1px solid var(--ink)}
+.ind-list li{display:grid;grid-template-columns:70px 1fr 1.3fr 40px;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .25s}
+.ind-list li:hover{padding-left:12px}
+.ind-list li:hover .go{background:var(--rust);color:var(--paper);border-color:var(--rust)}
+.ind-list .n{font-family:var(--serif);color:var(--muted)}
+.ind-list h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:-.01em}
+.ind-list p{color:var(--ink-2);font-size:.95rem}
+.go{width:40px;height:40px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;transition:all .25s}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{background:var(--paper);border:1.5px solid var(--ink);border-radius:18px;padding:28px 24px;position:relative}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--serif);font-size:3rem;line-height:1;color:var(--rust);display:block;margin-bottom:22px}
+.step h3{font-size:1.08rem;font-weight:700;margin-bottom:8px}
+.step p{font-size:.94rem;color:var(--ink-2)}
+
+/* split: talent */
+.talent{background:var(--ink);color:var(--paper)}
+.talent .num{color:var(--sand);border-color:var(--sand)}
+.talent h2 em{color:var(--sand)}
+.talent .sec-head p{color:#C9C3B6}
+.talent-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.perks{list-style:none;display:grid;gap:0}
+.perks li{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid #34403A}
+.perks li:first-child{border-top:1px solid #34403A}
+.perks .dot{flex:0 0 12px;height:12px;border-radius:50%;background:var(--rust);margin-top:8px}
+.perks b{display:block;font-size:1.04rem}
+.perks span{color:#B7B2A6;font-size:.94rem}
+.roles{background:var(--paper);color:var(--ink);border-radius:22px;padding:32px}
+.roles h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin-bottom:6px}
+.roles > p{color:var(--ink-2);font-size:.95rem;margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chips span{border:1px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:600}
+.talent .btn-solid{background:var(--rust);border-color:var(--rust)}
+.talent .btn-solid:hover{background:var(--ink);border-color:var(--ink)}
+
+/* principles */
+.princ{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink)}
+.pr{padding:34px 28px 10px 0}
+.pr + .pr{padding-left:28px;border-left:1px solid var(--line)}
+.pr h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.7rem;margin-bottom:10px;color:var(--rust-deep)}
+.pr p{color:var(--ink-2);font-size:.97rem}
+
+/* area */
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.towns{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--serif);font-size:1.3rem;margin-top:24px}
+.towns span:not(:last-child)::after{content:" /";color:var(--rust)}
+.map{background:var(--paper-2);border-radius:22px;aspect-ratio:1/1;position:relative;overflow:hidden;border:1.5px solid var(--ink)}
+.map svg{width:100%;height:100%}
+
+/* contact */
+.contact{background:var(--rust);color:var(--paper)}
+.contact .num{color:var(--paper);border-color:var(--paper)}
+.contact h2 em{color:var(--ink)}
+.contact .sec-head p{color:#FBE6DC}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+.info dl{display:grid;gap:22px}
+.info dt{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;opacity:.8}
+.info dd{font-family:var(--serif);font-size:1.3rem;line-height:1.35}
+.info dd a{text-decoration:none;border-bottom:1.5px solid rgba(243,237,226,.5)}
+form{background:var(--paper);color:var(--ink);border-radius:22px;padding:30px}
+.tabs{display:flex;gap:6px;background:var(--paper-2);border-radius:999px;padding:5px;margin-bottom:22px}
+.tabs button{flex:1;border:0;background:none;border-radius:999px;padding:10px;font:700 .9rem var(--sans);cursor:pointer;color:var(--ink-2)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fields .full{grid-column:1/-1}
+label{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px;color:var(--ink-2)}
+input,select,textarea{width:100%;font:500 1rem var(--sans);color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+.form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;flex-wrap:wrap}
+.form-foot small{color:var(--muted);font-size:.8rem;max-width:26em}
+.hidden{display:none}
+
+/* footer */
+footer{padding:56px 0 40px;background:var(--ink);color:#B7B2A6;font-size:.9rem}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid #34403A}
+.foot-word{font-family:var(--serif);font-size:clamp(3rem,10vw,8rem);line-height:.9;letter-spacing:-.04em;color:var(--paper)}
+.foot-word em{color:var(--rust)}
+.foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:24px}
+footer a{text-decoration:none}footer a:hover{color:var(--paper)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  nav{display:none}
+  nav.open{display:block;position:absolute;top:72px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--ink);padding:16px 24px 24px}
+  nav.open ul{flex-direction:column;gap:16px}
+  .menu-toggle{display:inline-grid;place-items:center}
+  .hero-grid,.talent-grid,.area-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-art{max-width:420px;aspect-ratio:1/1;border-radius:200px 200px 18px 18px}
+  .services,.steps{grid-template-columns:1fr 1fr}
+  .svc:nth-child(2){border-right:0}
+  .svc{border-bottom:1px solid var(--line)}
+  .princ{grid-template-columns:1fr}
+  .pr,.pr + .pr{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  section{padding:72px 0}
+  .bar .btn{display:none}
+  .sec-head{grid-template-columns:1fr;gap:14px;margin-bottom:36px}
+  .num{width:80px}
+  .services,.steps,.fields{grid-template-columns:1fr}
+  .svc{border-right:0}
+  .svc h3{margin-top:20px}
+  .ind-list li{grid-template-columns:40px 1fr;gap:6px 14px}
+  .ind-list li p{grid-column:2}
+  .ind-list .go{display:none}
+  .tag{left:12px;bottom:12px;right:12px;max-width:none}
+  form{padding:22px 18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Velnaris Group home">
+      <img src="logo.svg" alt="">
+      <span><b>Velnaris</b><small>Group</small></span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#services" data-i="nav.services">Services</a></li>
+        <li><a href="#industries" data-i="nav.industries">Industries</a></li>
+        <li><a href="#process" data-i="nav.process">How it works</a></li>
+        <li><a href="#talent" data-i="nav.talent">Find work</a></li>
+        <li><a href="#contact" data-i="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" aria-pressed="true">EN</button>
+        <button data-lang="es" aria-pressed="false">ES</button>
+        <button data-lang="zh" aria-pressed="false">中文</button>
+      </div>
+      <a class="btn btn-solid" href="#contact" data-i="cta.hire">Request staff</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="rv">
+        <span class="kicker" data-i="hero.kicker">Staffing · Roselle, Illinois</span>
+        <h1 data-i="hero.title">People who <em>show up</em>, for the work that can't wait.</h1>
+        <p class="lede" data-i="hero.lede">Velnaris Group connects Chicagoland employers with dependable workers for warehouse, manufacturing, logistics and food production — and treats every worker like someone worth keeping.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="#contact" data-hire><span data-i="cta.hire">Request staff</span> <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#contact" data-work><span data-i="cta.work">I'm looking for work</span> <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="hero-art rv" aria-hidden="true">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="500" fill="#16201B"/>
+          <circle cx="290" cy="150" r="80" fill="#D9542B"/>
+          <rect x="40" y="250" width="150" height="250" fill="#5B6B4A"/>
+          <rect x="190" y="320" width="170" height="180" fill="#E4C9A0"/>
+          <rect x="210" y="340" width="60" height="60" fill="#16201B" opacity=".85"/>
+          <rect x="280" y="340" width="60" height="60" fill="#16201B" opacity=".85"/>
+          <path d="M40 250 L115 190 L190 250Z" fill="#3C4740"/>
+          <g stroke="#F3EDE2" stroke-width="2" opacity=".35">
+            <line x1="0" y1="500" x2="400" y2="500"/>
+            <line x1="70" y1="290" x2="160" y2="290"/>
+            <line x1="70" y1="330" x2="160" y2="330"/>
+            <line x1="70" y1="370" x2="160" y2="370"/>
+            <line x1="70" y1="410" x2="160" y2="410"/>
+          </g>
+          <g fill="#F3EDE2">
+            <circle cx="80" cy="120" r="2"/><circle cx="130" cy="80" r="1.5"/><circle cx="180" cy="140" r="1.5"/><circle cx="60" cy="190" r="1.2"/>
+          </g>
+        </svg>
+        <div class="tag"><b data-i="hero.tagT">Day, swing &amp; night shifts</b><span data-i="hero.tagD">Short-notice orders filled from a vetted local pool.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">01</span>
+        <div>
+          <h2 data-i="svc.title">Staffing that bends to <em>your</em> schedule.</h2>
+          <p data-i="svc.lede">From a single replacement tomorrow morning to a full second shift next month, we build the arrangement around your operation.</p>
+        </div>
+      </div>
+      <div class="services rv">
+        <div class="svc"><i>a.</i><h3 data-i="svc.1t">Temporary staffing</h3><p data-i="svc.1d">Cover peaks, absences and seasonal volume with workers who are screened, briefed and ready on day one.</p></div>
+        <div class="svc"><i>b.</i><h3 data-i="svc.2t">Temp-to-hire</h3><p data-i="svc.2d">Work with someone on the floor before you commit. Convert the people who fit your team.</p></div>
+        <div class="svc"><i>c.</i><h3 data-i="svc.3t">Direct hire</h3><p data-i="svc.3d">We recruit and screen for permanent roles — leads, operators and supervisors — so you only interview finalists.</p></div>
+        <div class="svc"><i>d.</i><h3 data-i="svc.4t">On-site coordination</h3><p data-i="svc.4d">For larger crews, a Velnaris coordinator handles attendance, time records and day-to-day communication.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries" class="ind">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">02</span>
+        <div>
+          <h2 data-i="ind.title">Where our people <em>work</em>.</h2>
+        </div>
+      </div>
+      <ul class="ind-list rv">
+        <li><span class="n">01</span><h3 data-i="ind.1t">Warehouse &amp; distribution</h3><p data-i="ind.1d">Pickers, packers, loaders, shipping &amp; receiving, forklift operators.</p><span class="go">→</span></li>
+        <li><span class="n">02</span><h3 data-i="ind.2t">Manufacturing</h3><p data-i="ind.2d">Assembly, machine operators, quality inspection, line support.</p><span class="go">→</span></li>
+        <li><span class="n">03</span><h3 data-i="ind.3t">Logistics &amp; fulfillment</h3><p data-i="ind.3d">E-commerce fulfillment, cross-dock, inventory and returns processing.</p><span class="go">→</span></li>
+        <li><span class="n">04</span><h3 data-i="ind.4t">Food production</h3><p data-i="ind.4d">Food packaging, sanitation, prep and production line workers.</p><span class="go">→</span></li>
+        <li><span class="n">05</span><h3 data-i="ind.5t">Facilities &amp; general labor</h3><p data-i="ind.5d">Janitorial, material handling, event setup and general labor crews.</p><span class="go">→</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">03</span>
+        <div>
+          <h2 data-i="proc.title">Four steps, <em>no runaround</em>.</h2>
+          <p data-i="proc.lede">One point of contact from the first call to the last timesheet.</p>
+        </div>
+      </div>
+      <div class="steps rv">
+        <div class="step"><h3 data-i="proc.1t">Tell us the need</h3><p data-i="proc.1d">Roles, headcount, shift times, site requirements and start date.</p></div>
+        <div class="step"><h3 data-i="proc.2t">We match &amp; screen</h3><p data-i="proc.2d">Work-authorization verification, references and job-specific checks before anyone arrives.</p></div>
+        <div class="step"><h3 data-i="proc.3t">Crew arrives ready</h3><p data-i="proc.3d">Workers are briefed on location, PPE and expectations ahead of their first shift.</p></div>
+        <div class="step"><h3 data-i="proc.4t">We stay on it</h3><p data-i="proc.4d">Attendance follow-up, quick replacements and one consolidated invoice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALENT -->
+  <section id="talent" class="talent">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">04</span>
+        <div>
+          <h2 data-i="tal.title">Looking for work? <em>Start this week.</em></h2>
+          <p data-i="tal.lede">We place people in steady jobs close to home. Tell us what you can do and when you're available — we'll call you back.</p>
+        </div>
+      </div>
+      <div class="talent-grid">
+        <ul class="perks rv">
+          <li><span class="dot"></span><div><b data-i="tal.1t">Weekly pay</b><span data-i="tal.1d">Get paid every week by direct deposit.</span></div></li>
+          <li><span class="dot"></span><div><b data-i="tal.2t">Shifts that fit your life</b><span data-i="tal.2d">Day, evening, overnight and weekend options.</span></div></li>
+          <li><span class="dot"></span><div><b data-i="tal.3t">A path to permanent</b><span data-i="tal.3d">Many assignments can lead to full-time hire.</span></div></li>
+          <li><span class="dot"></span><div><b data-i="tal.4t">We speak your language</b><span data-i="tal.4d">Our team supports English, Spanish and Chinese.</span></div></li>
+        </ul>
+        <div class="roles rv">
+          <h3 data-i="tal.rolesT">Roles we hire for</h3>
+          <p data-i="tal.rolesD">No experience needed for many positions — we'll tell you what each job requires.</p>
+          <div class="chips" id="chips"></div>
+          <a class="btn btn-solid" href="#contact" data-work><span data-i="cta.apply">Apply now</span> <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">05</span>
+        <div><h2 data-i="pr.title">What we <em>hold ourselves</em> to.</h2></div>
+      </div>
+      <div class="princ rv">
+        <div class="pr"><h3 data-i="pr.1t">Reliable.</h3><p data-i="pr.1d">We confirm every shift before it starts and tell you early if something changes — never on the morning of.</p></div>
+        <div class="pr"><h3 data-i="pr.2t">Compliant.</h3><p data-i="pr.2d">Work-authorization checks, accurate time records and payroll handled by the book, so you aren't left exposed.</p></div>
+        <div class="pr"><h3 data-i="pr.3t">Respectful.</h3><p data-i="pr.3d">Workers who are paid on time and treated fairly come back. That's how we keep your crew consistent.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREA -->
+  <section class="ind">
+    <div class="wrap area-grid">
+      <div class="rv">
+        <div class="sec-head" style="grid-template-columns:1fr;margin-bottom:0">
+          <span class="num" style="width:80px">06</span>
+          <div>
+            <h2 data-i="area.title">Rooted in the <em>west suburbs</em>.</h2>
+            <p data-i="area.lede">Based in Roselle, we serve employers across DuPage and northwest Cook County, including the O'Hare industrial corridor.</p>
+          </div>
+        </div>
+        <div class="towns">
+          <span>Roselle</span><span>Itasca</span><span>Schaumburg</span><span>Bloomingdale</span><span>Elk Grove Village</span><span>Wood Dale</span><span>Bensenville</span><span>Addison</span><span>Carol Stream</span>
+        </div>
+      </div>
+      <div class="map rv" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#CFC5B3" stroke-width="1"/></pattern></defs>
+          <rect width="400" height="400" fill="url(#g)"/>
+          <path d="M0 120 C120 140 220 90 400 130" stroke="#5B6B4A" stroke-width="10" fill="none" opacity=".55"/>
+          <path d="M150 0 C170 140 160 260 190 400" stroke="#16201B" stroke-width="6" fill="none" opacity=".25"/>
+          <path d="M0 290 C140 270 260 300 400 260" stroke="#16201B" stroke-width="6" fill="none" opacity=".25"/>
+          <circle cx="178" cy="200" r="120" fill="#D9542B" opacity=".08"/>
+          <circle cx="178" cy="200" r="70" fill="#D9542B" opacity=".12"/>
+          <circle cx="178" cy="200" r="11" fill="#D9542B"/>
+          <circle cx="178" cy="200" r="22" fill="none" stroke="#D9542B" stroke-width="2"/>
+          <text x="198" y="190" font-family="Fraunces,Georgia,serif" font-size="20" fill="#16201B">Roselle</text>
+          <g font-family="Manrope,sans-serif" font-size="11" fill="#3C4740" letter-spacing="1">
+            <circle cx="110" cy="110" r="4" fill="#16201B"/><text x="60" y="98">SCHAUMBURG</text>
+            <circle cx="270" cy="150" r="4" fill="#16201B"/><text x="240" y="138">ELK GROVE VLG.</text>
+            <circle cx="245" cy="230" r="4" fill="#16201B"/><text x="255" y="234">WOOD DALE</text>
+            <circle cx="300" cy="260" r="4" fill="#16201B"/><text x="290" y="282">BENSENVILLE</text>
+            <circle cx="220" cy="300" r="4" fill="#16201B"/><text x="160" y="322">ADDISON</text>
+            <circle cx="110" cy="260" r="4" fill="#16201B"/><text x="50" y="282">BLOOMINGDALE</text>
+          </g>
+          <g transform="translate(350 40)" fill="#16201B"><path d="M0 -14 L6 6 L0 2 L-6 6Z"/><text x="-4" y="22" font-family="Manrope,sans-serif" font-size="11">N</text></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">07</span>
+        <div>
+          <h2 data-i="ct.title">Let's get you <em>covered</em>.</h2>
+          <p data-i="ct.lede">Send a request and we'll reply within one business day.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="info rv">
+          <dl>
+            <div><dt data-i="ct.office">Office</dt><dd>18 Congress Cir W<br>Roselle, IL 60172</dd></div>
+            <div><dt data-i="ct.email">Email</dt><dd><a id="email-link" href="#"></a></dd></div>
+            <div id="phone-row" class="hidden"><dt data-i="ct.phone">Phone</dt><dd><a id="phone-link" href="#"></a></dd></div>
+            <div><dt data-i="ct.hours">Hours</dt><dd data-i="ct.hoursV">Mon – Fri, 8:00 – 17:00</dd></div>
+          </dl>
+        </div>
+        <form id="form" class="rv" novalidate>
+          <div class="tabs" role="tablist">
+            <button type="button" role="tab" aria-selected="true" data-mode="hire" data-i="ct.tabHire">I need staff</button>
+            <button type="button" role="tab" aria-selected="false" data-mode="work" data-i="ct.tabWork">I need work</button>
+          </div>
+          <div class="fields">
+            <div><label for="f-name" data-i="f.name">Full name</label><input id="f-name" name="name" required autocomplete="name"></div>
+            <div><label for="f-phone" data-i="f.phone">Phone</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel"></div>
+            <div class="full"><label for="f-email" data-i="f.email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+            <div class="m-hire full"><label for="f-co" data-i="f.company">Company</label><input id="f-co" name="company" autocomplete="organization"></div>
+            <div class="m-hire"><label for="f-head" data-i="f.headcount">Workers needed</label><input id="f-head" name="headcount" type="number" min="1"></div>
+            <div class="m-hire"><label for="f-start" data-i="f.start">Start date</label><input id="f-start" name="start" type="date"></div>
+            <div class="m-work hidden"><label for="f-lang" data-i="f.lang">Preferred language</label>
+              <select id="f-lang" name="language"><option>English</option><option>Español</option><option>中文</option></select></div>
+            <div class="m-work hidden"><label for="f-shift" data-i="f.shift">Preferred shift</label>
+              <select id="f-shift" name="shift"><option value="Any" data-i="f.any">Any</option><option value="Day" data-i="f.day">Day</option><option value="Evening" data-i="f.eve">Evening</option><option value="Night" data-i="f.night">Night</option></select></div>
+            <div class="full"><label for="f-msg" data-i="f.msg">Details</label><textarea id="f-msg" name="message" data-ph="f.msgPh"></textarea></div>
+          </div>
+          <div class="form-foot">
+            <small data-i="f.note">Submitting opens your email app with the details filled in.</small>
+            <button class="btn btn-solid" type="submit"><span data-i="f.send">Send</span> <span class="arr">→</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-word">Velnaris<em>.</em></div>
+      <div>Velnaris Group LLC<br>18 Congress Cir W, Roselle, IL 60172</div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> Velnaris Group LLC. <span data-i="foot.rights">All rights reserved.</span></span>
+      <span data-i="foot.eeo">Velnaris Group is an equal opportunity employer.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---- Site settings: edit these ---- */
+const SITE = {
+  email: 'info@velnarisgroup.com',   // TODO: confirm real mailbox
+  phone: ''                          // e.g. '(630) 555-0100' — row stays hidden while empty
+};
+
+const T = {
+en:{
+ 'nav.services':'Services','nav.industries':'Industries','nav.process':'How it works','nav.talent':'Find work','nav.contact':'Contact',
+ 'cta.hire':'Request staff','cta.work':"I'm looking for work",'cta.apply':'Apply now',
+ 'hero.kicker':'Staffing · Roselle, Illinois',
+ 'hero.title':'People who <em>show up</em>, for the work that can\'t wait.',
+ 'hero.lede':'Velnaris Group connects Chicagoland employers with dependable workers for warehouse, manufacturing, logistics and food production — and treats every worker like someone worth keeping.',
+ 'hero.tagT':'Day, swing & night shifts','hero.tagD':'Short-notice orders filled from a vetted local pool.',
+ ticker:['Warehouse','Manufacturing','Logistics','Food production','Fulfillment','Forklift','Assembly','Packaging','General labor'],
+ 'svc.title':'Staffing that bends to <em>your</em> schedule.',
+ 'svc.lede':'From a single replacement tomorrow morning to a full second shift next month, we build the arrangement around your operation.',
+ 'svc.1t':'Temporary staffing','svc.1d':'Cover peaks, absences and seasonal volume with workers who are screened, briefed and ready on day one.',
+ 'svc.2t':'Temp-to-hire','svc.2d':'Work with someone on the floor before you commit. Convert the people who fit your team.',
+ 'svc.3t':'Direct hire','svc.3d':'We recruit and screen for permanent roles — leads, operators and supervisors — so you only interview finalists.',
+ 'svc.4t':'On-site coordination','svc.4d':'For larger crews, a Velnaris coordinator handles attendance, time records and day-to-day communication.',
+ 'ind.title':'Where our people <em>work</em>.',
+ 'ind.1t':'Warehouse & distribution','ind.1d':'Pickers, packers, loaders, shipping & receiving, forklift operators.',
+ 'ind.2t':'Manufacturing','ind.2d':'Assembly, machine operators, quality inspection, line support.',
+ 'ind.3t':'Logistics & fulfillment','ind.3d':'E-commerce fulfillment, cross-dock, inventory and returns processing.',
+ 'ind.4t':'Food production','ind.4d':'Food packaging, sanitation, prep and production line workers.',
+ 'ind.5t':'Facilities & general labor','ind.5d':'Janitorial, material handling, event setup and general labor crews.',
+ 'proc.title':'Four steps, <em>no runaround</em>.','proc.lede':'One point of contact from the first call to the last timesheet.',
+ 'proc.1t':'Tell us the need','proc.1d':'Roles, headcount, shift times, site requirements and start date.',
+ 'proc.2t':'We match & screen','proc.2d':'Work-authorization verification, references and job-specific checks before anyone arrives.',
+ 'proc.3t':'Crew arrives ready','proc.3d':'Workers are briefed on location, PPE and expectations ahead of their first shift.',
+ 'proc.4t':'We stay on it','proc.4d':'Attendance follow-up, quick replacements and one consolidated invoice.',
+ 'tal.title':'Looking for work? <em>Start this week.</em>',
+ 'tal.lede':"We place people in steady jobs close to home. Tell us what you can do and when you're available — we'll call you back.",
+ 'tal.1t':'Weekly pay','tal.1d':'Get paid every week by direct deposit.',
+ 'tal.2t':'Shifts that fit your life','tal.2d':'Day, evening, overnight and weekend options.',
+ 'tal.3t':'A path to permanent','tal.3d':'Many assignments can lead to full-time hire.',
+ 'tal.4t':'We speak your language','tal.4d':'Our team supports English, Spanish and Chinese.',
+ 'tal.rolesT':'Roles we hire for','tal.rolesD':"No experience needed for many positions — we'll tell you what each job requires.",
+ roles:['Picker / Packer','Forklift operator','Machine operator','Assembler','Loader','Quality inspector','Food packer','Sanitation','Shipping & receiving','General labor'],
+ 'pr.title':'What we <em>hold ourselves</em> to.',
+ 'pr.1t':'Reliable.','pr.1d':"We confirm every shift before it starts and tell you early if something changes — never on the morning of.",
+ 'pr.2t':'Compliant.','pr.2d':"Work-authorization checks, accurate time records and payroll handled by the book, so you aren't left exposed.",
+ 'pr.3t':'Respectful.','pr.3d':"Workers who are paid on time and treated fairly come back. That's how we keep your crew consistent.",
+ 'area.title':'Rooted in the <em>west suburbs</em>.',
+ 'area.lede':"Based in Roselle, we serve employers across DuPage and northwest Cook County, including the O'Hare industrial corridor.",
+ 'ct.title':"Let's get you <em>covered</em>.",'ct.lede':"Send a request and we'll reply within one business day.",
+ 'ct.office':'Office','ct.email':'Email','ct.phone':'Phone','ct.hours':'Hours','ct.hoursV':'Mon – Fri, 8:00 – 17:00',
+ 'ct.tabHire':'I need staff','ct.tabWork':'I need work',
+ 'f.name':'Full name','f.phone':'Phone','f.email':'Email','f.company':'Company','f.headcount':'Workers needed','f.start':'Start date',
+ 'f.lang':'Preferred language','f.shift':'Preferred shift','f.any':'Any','f.day':'Day','f.eve':'Evening','f.night':'Night',
+ 'f.msg':'Details','f.msgPhHire':'Roles, shift times, location, pay rate…','f.msgPhWork':'Jobs you have done, certifications (e.g. forklift), where you live…',
+ 'f.note':'Submitting opens your email app with the details filled in.','f.send':'Send','f.req':'Please enter your name and phone number.',
+ 'subj.hire':'Staffing request','subj.work':'Job application',
+ 'foot.rights':'All rights reserved.','foot.eeo':'Velnaris Group is an equal opportunity employer.'
+},
+es:{
+ 'nav.services':'Servicios','nav.industries':'Industrias','nav.process':'Cómo funciona','nav.talent':'Buscar empleo','nav.contact':'Contacto',
+ 'cta.hire':'Solicitar personal','cta.work':'Busco trabajo','cta.apply':'Aplicar ahora',
+ 'hero.kicker':'Agencia de personal · Roselle, Illinois',
+ 'hero.title':'Gente que <em>sí llega</em>, para el trabajo que no puede esperar.',
+ 'hero.lede':'Velnaris Group conecta a empresas del área de Chicago con trabajadores confiables para almacenes, manufactura, logística y producción de alimentos, y trata a cada trabajador como alguien que vale la pena conservar.',
+ 'hero.tagT':'Turnos de día, tarde y noche','hero.tagD':'Pedidos urgentes cubiertos con personal local verificado.',
+ ticker:['Almacén','Manufactura','Logística','Alimentos','Fulfillment','Montacargas','Ensamblaje','Empaque','Labor general'],
+ 'svc.title':'Personal que se adapta a <em>su</em> horario.',
+ 'svc.lede':'Desde un reemplazo para mañana temprano hasta un segundo turno completo el próximo mes, armamos el servicio alrededor de su operación.',
+ 'svc.1t':'Personal temporal','svc.1d':'Cubra picos, ausencias y temporadas altas con trabajadores evaluados, informados y listos desde el primer día.',
+ 'svc.2t':'Temporal a permanente','svc.2d':'Conozca al trabajador en planta antes de comprometerse y contrate a quienes encajan en su equipo.',
+ 'svc.3t':'Contratación directa','svc.3d':'Reclutamos y evaluamos para puestos permanentes —líderes, operadores y supervisores— para que solo entreviste finalistas.',
+ 'svc.4t':'Coordinación en sitio','svc.4d':'Para equipos grandes, un coordinador de Velnaris maneja asistencia, registros de horas y comunicación diaria.',
+ 'ind.title':'Dónde <em>trabaja</em> nuestra gente.',
+ 'ind.1t':'Almacén y distribución','ind.1d':'Surtidores, empacadores, cargadores, envíos y recepción, operadores de montacargas.',
+ 'ind.2t':'Manufactura','ind.2d':'Ensamblaje, operadores de máquina, inspección de calidad, apoyo en línea.',
+ 'ind.3t':'Logística y fulfillment','ind.3d':'Pedidos de e-commerce, cross-dock, inventario y devoluciones.',
+ 'ind.4t':'Producción de alimentos','ind.4d':'Empaque de alimentos, sanitización, preparación y línea de producción.',
+ 'ind.5t':'Instalaciones y labor general','ind.5d':'Limpieza, manejo de materiales, montaje de eventos y cuadrillas generales.',
+ 'proc.title':'Cuatro pasos, <em>sin complicaciones</em>.','proc.lede':'Un solo contacto desde la primera llamada hasta la última hoja de horas.',
+ 'proc.1t':'Cuéntenos qué necesita','proc.1d':'Puestos, cantidad, horarios, requisitos del sitio y fecha de inicio.',
+ 'proc.2t':'Seleccionamos y verificamos','proc.2d':'Verificación de autorización de empleo, referencias y requisitos del puesto antes de que lleguen.',
+ 'proc.3t':'El equipo llega listo','proc.3d':'Los trabajadores conocen la ubicación, el equipo de protección y lo que se espera antes de su primer turno.',
+ 'proc.4t':'Damos seguimiento','proc.4d':'Control de asistencia, reemplazos rápidos y una sola factura.',
+ 'tal.title':'¿Busca trabajo? <em>Empiece esta semana.</em>',
+ 'tal.lede':'Colocamos a personas en trabajos estables cerca de casa. Díganos qué sabe hacer y cuándo está disponible; le devolvemos la llamada.',
+ 'tal.1t':'Pago semanal','tal.1d':'Cobre cada semana por depósito directo.',
+ 'tal.2t':'Turnos a su medida','tal.2d':'Opciones de día, tarde, noche y fin de semana.',
+ 'tal.3t':'Camino a un puesto fijo','tal.3d':'Muchas asignaciones pueden terminar en contratación de tiempo completo.',
+ 'tal.4t':'Hablamos su idioma','tal.4d':'Nuestro equipo atiende en inglés, español y chino.',
+ 'tal.rolesT':'Puestos disponibles','tal.rolesD':'Muchos puestos no requieren experiencia; le explicamos lo que pide cada trabajo.',
+ roles:['Surtidor / Empacador','Operador de montacargas','Operador de máquina','Ensamblador','Cargador','Inspector de calidad','Empacador de alimentos','Sanitización','Envíos y recepción','Labor general'],
+ 'pr.title':'Lo que nos <em>exigimos</em>.',
+ 'pr.1t':'Confiables.','pr.1d':'Confirmamos cada turno antes de que empiece y avisamos con tiempo si algo cambia, nunca la misma mañana.',
+ 'pr.2t':'En regla.','pr.2d':'Verificación de autorización de empleo, registros de horas exactos y nómina correcta, para que usted no quede expuesto.',
+ 'pr.3t':'Respetuosos.','pr.3d':'Los trabajadores que cobran a tiempo y reciben buen trato regresan. Así mantenemos estable su equipo.',
+ 'area.title':'Arraigados en los <em>suburbios del oeste</em>.',
+ 'area.lede':'Desde Roselle atendemos a empresas en DuPage y el noroeste del condado de Cook, incluido el corredor industrial de O\'Hare.',
+ 'ct.title':'Lo <em>cubrimos</em>.','ct.lede':'Envíe su solicitud y le respondemos en un día hábil.',
+ 'ct.office':'Oficina','ct.email':'Correo','ct.phone':'Teléfono','ct.hours':'Horario','ct.hoursV':'Lun – Vie, 8:00 – 17:00',
+ 'ct.tabHire':'Necesito personal','ct.tabWork':'Necesito trabajo',
+ 'f.name':'Nombre completo','f.phone':'Teléfono','f.email':'Correo','f.company':'Empresa','f.headcount':'Trabajadores necesarios','f.start':'Fecha de inicio',
+ 'f.lang':'Idioma preferido','f.shift':'Turno preferido','f.any':'Cualquiera','f.day':'Día','f.eve':'Tarde','f.night':'Noche',
+ 'f.msg':'Detalles','f.msgPhHire':'Puestos, horarios, ubicación, tarifa…','f.msgPhWork':'Trabajos que ha hecho, certificaciones (p. ej. montacargas), dónde vive…',
+ 'f.note':'Al enviar se abre su aplicación de correo con los datos llenos.','f.send':'Enviar','f.req':'Escriba su nombre y teléfono, por favor.',
+ 'subj.hire':'Solicitud de personal','subj.work':'Solicitud de empleo',
+ 'foot.rights':'Todos los derechos reservados.','foot.eeo':'Velnaris Group es un empleador que ofrece igualdad de oportunidades.'
+},
+zh:{
+ 'nav.services':'服务','nav.industries':'行业','nav.process':'合作流程','nav.talent':'求职','nav.contact':'联系我们',
+ 'cta.hire':'申请用工','cta.work':'我要找工作','cta.apply':'立即报名',
+ 'hero.kicker':'人力派遣 · 伊利诺伊州 Roselle',
+ 'hero.title':'<em>准时到岗</em>的人，<br>做等不起的活。',
+ 'hero.lede':'Velnaris Group 为芝加哥地区的企业提供可靠的仓储、制造、物流和食品生产用工——也把每一位工人当作值得长期留住的伙伴。',
+ 'hero.tagT':'白班、中班、夜班','hero.tagD':'急单也能从本地已审核人员中快速补齐。',
+ ticker:['仓储','制造','物流','食品生产','电商履约','叉车','组装','包装','普工'],
+ 'svc.title':'按<em>您的</em>排班来派人。',
+ 'svc.lede':'无论是明早临时缺一个人，还是下个月要开一整条二班，我们都围绕您的生产来安排。',
+ 'svc.1t':'临时派遣','svc.1d':'旺季、缺勤、季节性高峰都能补上——人员已审核、已交代清楚，第一天就能上手。',
+ 'svc.2t':'先派遣后转正','svc.2d':'先在现场一起干，再决定是否录用，把合适的人留下来。',
+ 'svc.3t':'直接招聘','svc.3d':'为长期岗位（组长、操作工、主管）招人和筛选，您只需面试最终人选。',
+ 'svc.4t':'驻场管理','svc.4d':'人数较多时，由 Velnaris 驻场协调员负责考勤、工时记录和日常沟通。',
+ 'ind.title':'我们的人在这些地方<em>上班</em>。',
+ 'ind.1t':'仓储与配送','ind.1d':'拣货、打包、装卸、收发货、叉车司机。',
+ 'ind.2t':'制造业','ind.2d':'组装、机器操作、质检、产线辅助。',
+ 'ind.3t':'物流与电商履约','ind.3d':'电商订单处理、越库、库存和退货处理。',
+ 'ind.4t':'食品生产','ind.4d':'食品包装、清洁消毒、备料和生产线工人。',
+ 'ind.5t':'设施与普工','ind.5d':'保洁、物料搬运、活动搭建和普工班组。',
+ 'proc.title':'四步搞定，<em>不绕弯</em>。','proc.lede':'从第一通电话到最后一张工时单，都由同一个人对接。',
+ 'proc.1t':'告诉我们需求','proc.1d':'岗位、人数、班次时间、现场要求和开工日期。',
+ 'proc.2t':'匹配与审核','proc.2d':'到岗前完成工作资格核验、背景了解和岗位相关检查。',
+ 'proc.3t':'到岗即能干活','proc.3d':'上岗前已告知地点、劳保用品和工作要求。',
+ 'proc.4t':'持续跟进','proc.4d':'跟进出勤、快速补人，账单统一一张。',
+ 'tal.title':'在找工作？<em>这周就能上班。</em>',
+ 'tal.lede':'我们帮你在家附近找到稳定的工作。告诉我们你会做什么、什么时候有空——我们会给你回电话。',
+ 'tal.1t':'每周发薪','tal.1d':'每周直接打到银行账户。',
+ 'tal.2t':'班次灵活','tal.2d':'白班、晚班、夜班和周末班都有。',
+ 'tal.3t':'有机会转正','tal.3d':'很多岗位做得好可以转为正式员工。',
+ 'tal.4t':'语言没障碍','tal.4d':'我们提供英语、西班牙语和中文服务。',
+ 'tal.rolesT':'招聘岗位','tal.rolesD':'很多岗位不需要经验——每份工作的要求我们都会讲清楚。',
+ roles:['拣货 / 打包','叉车司机','机器操作工','组装工','装卸工','质检员','食品包装','清洁消毒','收发货','普工'],
+ 'pr.title':'我们<em>对自己</em>的要求。',
+ 'pr.1t':'靠谱。','pr.1d':'每个班次开工前都会确认；有变动提前通知，绝不拖到当天早上。',
+ 'pr.2t':'合规。','pr.2d':'工作资格核验、准确的工时记录和规范的薪资发放，不让您承担风险。',
+ 'pr.3t':'尊重。','pr.3d':'工资按时发、待人公平，工人才会回来。这样您的班组才稳定。',
+ 'area.title':'扎根<em>西郊</em>。',
+ 'area.lede':'总部位于 Roselle，服务 DuPage 县和库克县西北部的企业，包括奥黑尔机场周边工业区。',
+ 'ct.title':'用工的事，<em>交给我们</em>。','ct.lede':'提交需求，我们会在一个工作日内回复。',
+ 'ct.office':'办公室','ct.email':'邮箱','ct.phone':'电话','ct.hours':'办公时间','ct.hoursV':'周一至周五 8:00 – 17:00',
+ 'ct.tabHire':'我要招人','ct.tabWork':'我要找工作',
+ 'f.name':'姓名','f.phone':'电话','f.email':'邮箱','f.company':'公司名称','f.headcount':'需要人数','f.start':'开工日期',
+ 'f.lang':'沟通语言','f.shift':'想上的班次','f.any':'都可以','f.day':'白班','f.eve':'晚班','f.night':'夜班',
+ 'f.msg':'详细说明','f.msgPhHire':'岗位、班次时间、地点、时薪…','f.msgPhWork':'做过的工作、证书（如叉车证）、住在哪里…',
+ 'f.note':'提交后会打开您的邮件应用，内容已自动填好。','f.send':'提交','f.req':'请填写姓名和电话。',
+ 'subj.hire':'用工申请','subj.work':'求职报名',
+ 'foot.rights':'版权所有。','foot.eeo':'Velnaris Group 是平等机会雇主。'
+}};
+
+let lang = 'en', mode = 'hire';
+const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+function setLang(l){
+  lang = T[l] ? l : 'en';
+  const d = T[lang];
+  document.documentElement.lang = lang;
+  $$('[data-i]').forEach(el => { const v = d[el.dataset.i]; if (v != null) el.innerHTML = v; });
+  $$('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+  const items = d.ticker.concat(d.ticker);
+  $('#ticker').innerHTML = items.map(t => `<span>${t}</span>`).join('');
+  $('#chips').innerHTML = d.roles.map(r => `<span>${r}</span>`).join('');
+  $('#f-msg').placeholder = mode === 'hire' ? d['f.msgPhHire'] : d['f.msgPhWork'];
+  try { localStorage.setItem('vg-lang', lang); } catch(e){}
+}
+
+function setMode(m){
+  mode = m;
+  $$('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.mode === m));
+  $$('.m-hire').forEach(e => e.classList.toggle('hidden', m !== 'hire'));
+  $$('.m-work').forEach(e => e.classList.toggle('hidden', m !== 'work'));
+  $('#f-msg').placeholder = T[lang][m === 'hire' ? 'f.msgPhHire' : 'f.msgPhWork'];
+}
+
+$$('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+$$('.tabs button').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+$$('[data-hire]').forEach(a => a.addEventListener('click', () => setMode('hire')));
+$$('[data-work]').forEach(a => a.addEventListener('click', () => setMode('work')));
+
+const nav = $('#nav'), mt = $('.menu-toggle');
+mt.addEventListener('click', () => { const o = nav.classList.toggle('open'); mt.setAttribute('aria-expanded', o); });
+$$('#nav a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); mt.setAttribute('aria-expanded', false); }));
+
+$('#email-link').textContent = SITE.email;
+$('#email-link').href = 'mailto:' + SITE.email;
+if (SITE.phone) {
+  $('#phone-row').classList.remove('hidden');
+  $('#phone-link').textContent = SITE.phone;
+  $('#phone-link').href = 'tel:' + SITE.phone.replace(/[^\d+]/g, '');
+}
+$('#yr').textContent = new Date().getFullYear();
+
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), d = T[lang];
+  if (!f.get('name').trim() || !f.get('phone').trim()) { alert(d['f.req']); return; }
+  const keys = mode === 'hire'
+    ? ['name','phone','email','company','headcount','start','message']
+    : ['name','phone','email','language','shift','message'];
+  const body = keys.filter(k => (f.get(k) || '').trim()).map(k => `${k}: ${f.get(k)}`).join('\n');
+  const subject = `${d['subj.' + mode]} — ${f.get('name')}`;
+  location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
+$$('.rv').forEach(el => io.observe(el));
+
+let saved = null;
+try { saved = localStorage.getItem('vg-lang'); } catch(e){}
+setLang(saved || (navigator.language || '').slice(0,2));
+setMode('hire');
+</script>
+</body>
+</html>
